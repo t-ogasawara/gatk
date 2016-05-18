@@ -139,7 +139,11 @@ Sandbox.class: Sandbox.java
 copied_lib: libVectorLoglessPairHMM.so
 ifdef OUTPUT_DIR
 	mkdir -p $(OUTPUT_DIR)
+ifeq ($(arch),ppc64le)
+	rsync -a libVectorLoglessPairHMM.so $(OUTPUT_DIR)/libVectorLoglessPairHMM_ppc64le.so
+else
 	rsync -a libVectorLoglessPairHMM.so $(OUTPUT_DIR)/
+endif
 endif
 
 clean:
